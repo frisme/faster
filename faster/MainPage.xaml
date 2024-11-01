@@ -6,15 +6,29 @@
     <ScrollView>
         <Grid>
         
-        <Image Source=""
-        
-        
-        />
-        
-        
-        
-        
-        
+            <HorizontalStackLayout x:Name="primeiro">
+                <Image Source="*"/>
+                <Image Source="*"/>
+                <Image Source="*"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout x:Name="segundo">
+                <Image Source="*"/>
+                <Image Source="*"/>
+                <Image Source="*"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout x:Name="terceiro">
+                <Image Source="*"/>
+                <Image Source="*"/>
+                <Image Source="*"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout x:Name="quarto">
+                <Image Source="*"/>
+                <Image Source="*"/>
+                <Image Source="*"/>
+            </HorizontalStackLayout>
         
         </Grid>
     </ScrollView>
