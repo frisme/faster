@@ -7,28 +7,34 @@
         <Grid>
         
             <HorizontalStackLayout x:Name="primeiro">
-                <Image Source="*"/>
-                <Image Source="*"/>
-                <Image Source="*"/>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout x:Name="segundo">
-                <Image Source="*"/>
-                <Image Source="*"/>
-                <Image Source="*"/>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout x:Name="terceiro">
-                <Image Source="*"/>
-                <Image Source="*"/>
-                <Image Source="*"/>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout x:Name="quarto">
-                <Image Source="*"/>
-                <Image Source="*"/>
-                <Image Source="*"/>
-            </HorizontalStackLayout>
+                     <Image Source="ceu.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="ceu.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="ceu.png"
+                            Aspect="AspectFill"/>
+              </HorizontalStackLayout>
+              <HorizontalStackLayout x:Name="segundo">
+                     <Image Source="arvores.png"
+                            HeightRequest="300"/>
+                     <Image Source="arvores.png"
+                            HeightRequest="300"/>
+                     <Image Source="arvores.png"
+                            HeightRequest="300"/>
+              </HorizontalStackLayout>
+              <HorizontalStackLayout x:Name="terceiro">
+                     <Image Source="chao.png"
+                            WidthRequest="400"
+                            VerticalOptions="End"/>
+                     <Image Source="chao.png"
+                            WidthRequest="400"
+                            VerticalOptions="End"/>
+                     <Image Source="chao.png"
+                            WidthRequest="400"
+                            VerticalOptions="End"/>
+              </HorizontalStackLayout>
+                     <Image Source="skyline.png"
+                            WidthRequest="200"/>
         
         </Grid>
     </ScrollView>
