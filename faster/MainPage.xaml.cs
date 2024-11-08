@@ -10,12 +10,6 @@ public partial class MainPage : ContentPage
 	int velocidade2 = 0;
 	int velocidade3 = 0;
 	int velocidade4 = 0;
-	int velocidade5 = 0;
-	int velocidade6 = 0;
-	int velocidade7 = 0;
-	int velocidade8 = 0;
-	int velocidade9 = 0;
-	int velocidade10 = 0;
 	int larguraJanela = 0;
 	int alturaJanela = 0;
 
@@ -54,12 +48,6 @@ public partial class MainPage : ContentPage
 		velocidade2 = (int)(w * 0.004);
 		velocidade3 = (int)(w * 0.008);
 		velocidade4 = (int)(w * 0.01);
-		velocidade5 = (int)(w * 0.01);
-		velocidade6 = (int)(w * 0.01);
-		velocidade7 = (int)(w * 0.01);
-		velocidade8 = (int)(w * 0.01);
-		velocidade9 = (int)(w * 0.01);
-		velocidade10 = (int)(w * 0.01);
 	}
 
 	void CorrigeTamanhoCenario(double w, double height)
@@ -72,29 +60,11 @@ public partial class MainPage : ContentPage
 		    (c as Image).WidthRequest = w;
 		foreach (var d in quarto.Children)
 		    (d as Image).WidthRequest = w;
-		foreach (var e in quinto.Children)
-		    (e as Image).WidthRequest = w;
-		foreach (var f in sexto.Children)
-		    (f as Image).WidthRequest = w;
-		foreach (var g in setimo.Children)
-		    (g as Image).WidthRequest = w;
-		foreach (var h in oitavo.Children)
-		    (h as Image).WidthRequest = w;
-		foreach (var i in nono.Children)
-		    (i as Image).WidthRequest = w;
-		foreach (var j in decimo.Children)
-		    (j as Image).WidthRequest = w;
 
 		primeiro.WidthRequest = w * 1.5;
 		segundo.WidthRequest = w * 1.5;
 		terceiro.WidthRequest = w * 1.5;
 		quarto.WidthRequest = w * 1.5;
-		quinto.WidthRequest = w * 1.5;
-		sexto.WidthRequest = w * 1.5;
-		setimo.WidthRequest = w * 1.5;
-		oitavo.WidthRequest = w * 1.5;
-		nono.WidthRequest = w * 1.5;
-		decimo.WidthRequest = w * 1.5;
 	}
 
 	void GerenciarCenarios()
@@ -103,13 +73,7 @@ public partial class MainPage : ContentPage
 		GerenciaCenario(primeiro);
 		GerenciaCenario(segundo);
 		GerenciaCenario(terceiro);
-		GerenciaCenario(quarto);
-		GerenciaCenario(quinto);
-		GerenciaCenario(sexto);
-		GerenciaCenario(setimo);
-		GerenciaCenario(oitavo);
-		GerenciaCenario(nono);
-		GerenciaCenario(decimo);		
+		GerenciaCenario(quarto);	
 	}
 
 	void MoveCenario()
@@ -118,12 +82,6 @@ public partial class MainPage : ContentPage
 		segundo.TranslationX -= velocidade2;
 		terceiro.TranslationX -= velocidade3;
 		quarto.TranslationX -= velocidade4;
-		quinto.TranslationX -= velocidade5;
-		sexto.TranslationX -= velocidade6;
-		setimo.TranslationX -= velocidade7;
-		oitavo.TranslationX -= velocidade8;
-		nono.TranslationX -= velocidade9;
-		decimo.TranslationX -= velocidade10;
 	}
 
 	void GerenciaCenario(HorizontalStackLayout hsl)

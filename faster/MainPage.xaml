@@ -7,106 +7,40 @@
         <Grid>
         
             <HorizontalStackLayout x:Name="primeiro">
-                     <Image Source="mist.png"
+                     <Image Source="background.png"
                             Aspect="AspectFill"/>
-                     <Image Source="mist.png"
+                     <Image Source="background.png"
                             Aspect="AspectFill"/>
-                     <Image Source="mist.png"
+                     <Image Source="background.png"
                             Aspect="AspectFill"/>
               </HorizontalStackLayout>
               <HorizontalStackLayout x:Name="segundo">
-                     <Image Source="bushes.png"
+                     <Image Source="background2.png"
                             HeightRequest="300"/>
-                     <Image Source="bushes.png"
+                     <Image Source="background2.png"
                             HeightRequest="300"/>
-                     <Image Source="bushes.png"
+                     <Image Source="background2.png"
                             HeightRequest="300"/>
               </HorizontalStackLayout>
               <HorizontalStackLayout x:Name="terceiro">
-                     <Image Source="particles.png"
+                     <Image Source="background3.png"
                             WidthRequest="400"
                             VerticalOptions="End"/>
-                     <Image Source="particles.png"
+                     <Image Source="background3.png"
                             WidthRequest="400"
                             VerticalOptions="End"/>
-                     <Image Source="particles.png"
+                     <Image Source="background3.png"
                             WidthRequest="400"
                             VerticalOptions="End"/>
               </HorizontalStackLayout>
               <HorizontalStackLayout x:Name="quarto">
-                     <Image Source="forest1.png"
+                     <Image Source="floor.png"
                             WidthRequest="400"
                             VerticalOptions="End"/>
-                     <Image Source="forest1.png"
+                     <Image Source="floor.png"
                             WidthRequest="400"
                             VerticalOptions="End"/>
-                     <Image Source="forest1.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-              </HorizontalStackLayout>
-              <HorizontalStackLayout x:Name="quinto">
-                     <Image Source="particles2.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="particles2.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="particles2.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-              </HorizontalStackLayout>
-              <HorizontalStackLayout x:Name="sexto">
-                     <Image Source="forest2.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest2.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest2.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-              </HorizontalStackLayout>
-              <HorizontalStackLayout x:Name="setimo">
-                     <Image Source="forest3.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest3.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest3.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-              </HorizontalStackLayout>
-              <HorizontalStackLayout x:Name="oitavo">
-                     <Image Source="forest4.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest4.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest4.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-              </HorizontalStackLayout>
-              <HorizontalStackLayout x:Name="nono">
-                     <Image Source="forest5.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest5.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="forest5.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-              </HorizontalStackLayout>
-              <HorizontalStackLayout x:Name="decimo">
-                     <Image Source="sky.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="sky.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
-                     <Image Source="sky.png"
+                     <Image Source="floor.png"
                             WidthRequest="400"
                             VerticalOptions="End"/>
               </HorizontalStackLayout>
