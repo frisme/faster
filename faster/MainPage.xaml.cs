@@ -2,21 +2,26 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-	bool EstaMorto = false;
-	bool EstaPulando = false;
-	const int TempoEntreFrames = 25;
+	Player player;
+
+	bool estaMorto = false;
+	bool estaPulando = false;
+
+	const int tempoEntreFrames = 25;
+
 	int velocidade = 0;
+	int velocidade1 = 0;
 	int velocidade2 = 0;
 	int velocidade3 = 0;
 	int velocidade4 = 0;
 	int larguraJanela = 0;
 	int alturaJanela = 0;
 
-
 	public MainPage()
 	{
 		InitializeComponent();
+		player = new Player(Imgbixin);
+		player.Run();
 	}
 
 	protected override void OnAppearing()
@@ -27,39 +32,47 @@ public partial class MainPage : ContentPage
 
 	async Task Desenha()
 	{
-		while(!EstaMorto)
+		// bool a =false;
+		while(!estaMorto)
 		{
-			GerenciarCenarios();
-			await Task.Delay(TempoEntreFrames);
+			GerenciaCenarios();
+			player.Desenha();
+			//ImgCarro.IsVisible = a;
+			//ImgCarroBack.IsVisible = !a;
+			//a = !a;
+			await Task.Delay(tempoEntreFrames);
 		}
 	}
 
-	
-	protected override void OnSizeAllocated (double width, double height)
+	protected override void OnSizeAllocated(double w, double h)
 	{
-		base.OnSizeAllocated(width, height);
-			CorrigeTamanhoCenario(width, height);
-			CalculaVelocidade(width);
+		base.OnSizeAllocated(w, h);
+		CorrigeTamanhoCenario(w, h);
+		CalculaVelocidade(w);
 	}
 
 	void CalculaVelocidade(double w)
 	{
-		velocidade = (int)(w * 0.001);
+		velocidade1 = (int)(w * 0.001);
 		velocidade2 = (int)(w * 0.004);
-		velocidade3 = (int)(w * 0.008);
-		velocidade4 = (int)(w * 0.01);
+		velocidade3 = (int)(w * 0.007);
+		velocidade4 = (int)(w * .009);
+		velocidade = (int)(w * 0.01);
 	}
 
-	void CorrigeTamanhoCenario(double w, double height)
+	void CorrigeTamanhoCenario(double w, double h)
 	{
 		foreach (var a in primeiro.Children)
 			(a as Image).WidthRequest = w;
-		foreach (var b in segundo.Children)
-			(b as Image).WidthRequest = w;
-		foreach (var c in terceiro.Children)
-		    (c as Image).WidthRequest = w;
-		foreach (var d in quarto.Children)
-		    (d as Image).WidthRequest = w;
+
+		foreach (var a in segundo.Children)
+			(a as Image).WidthRequest = w;
+		
+		foreach (var a in terceiro.Children)
+			(a as Image).WidthRequest = w;
+		
+		foreach (var a in quarto.Children)
+			(a as Image).WidthRequest = w;
 
 		primeiro.WidthRequest = w * 1.5;
 		segundo.WidthRequest = w * 1.5;
@@ -67,18 +80,18 @@ public partial class MainPage : ContentPage
 		quarto.WidthRequest = w * 1.5;
 	}
 
-	void GerenciarCenarios()
+	void GerenciaCenarios()
 	{
 		MoveCenario();
 		GerenciaCenario(primeiro);
 		GerenciaCenario(segundo);
 		GerenciaCenario(terceiro);
-		GerenciaCenario(quarto);	
+		GerenciaCenario(quarto);		
 	}
 
 	void MoveCenario()
 	{
-		primeiro.TranslationX -= velocidade;
+		primeiro.TranslationX -= velocidade1;
 		segundo.TranslationX -= velocidade2;
 		terceiro.TranslationX -= velocidade3;
 		quarto.TranslationX -= velocidade4;
@@ -94,74 +107,5 @@ public partial class MainPage : ContentPage
 			hsl.Children.Add(view);
 			hsl.TranslationX = view.TranslationX;
 		}
-	}
-
-	public class Animacao
-	{
-		protected List<String> Animacao1 = new List<String>();
-		protected List<String> Animacao2 = new List<String>();
-		protected List<String> Animacao3 = new List<String>();
-		protected bool Loop = true;
-		protected int AnimacaoAtiva = 1;
-		bool parado = true;
-		int frameAtual = 1;
-		protected Image compImage;
-		public Animacao(Image a)
-		{
-			compImage = a;
-		}
-
-	public void Stop()
-	{
-		parado = true;
-	}
-
-	public void Play()
-	{
-		parado = false;
-	}
-
-	public void SetAnimacaoAtiva(int a)
-	{
-		AnimacaoAtiva = a;
-	}
-
-	public void Desenha()
-	{
-		if (parado)
-		   return;
-		string nomeArquivo;
-		int tamanhoAnimacao;
-		if (AnimacaoAtiva == 1)
-		{
-			nomeArquivo = Animacao1 [frameAtual];
-			tamanhoAnimacao = Animacao1.Count;
-		}
-		else if (AnimacaoAtiva == 2)
-		{
-			nomeArquivo = Animacao2[frameAtual];
-			tamanhoAnimacao = Animacao2.Count;
-		}
-		else if (AnimacaoAtiva == 3)
-		{
-			nomeArquivo = Animacao3[frameAtual];
-			tamanhoAnimacao = Animacao3.Count;
-		}
-		compImagem.Source = ImageSource.FromFile(nomeArquivo);
-		frameAtual++;
-		if (frameAtual >= tamanhoAnimacao)
-		{
-			if(Loop)
-			   frameAtual = 0;
-			else
-			{
-				parado = true;
-				QuandoParar();
-			}
-		}
-	}	
-}
-	public virtual void QuandoParar()
-	{
 	}
 }
