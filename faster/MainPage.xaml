@@ -49,11 +49,13 @@
                      <Image Source="bixim1.png"
                             WidthRequest="200"/>
 
-              <ff:CachedImage
-                     CacheType="Memory"
+              <ff:CachedImageView
+                     CacheType="Disc"
                      CacheDuration="365"
-                     x:Name="Imgbixin"
-                     WidthRequest="200"/>
+                     Source="bixim.png"
+                     x:Name="ImgbRoberto"
+                     WidthRequest="200"
+                     HeightRequest="50"/>
         
         </Grid>
     </ScrollView>

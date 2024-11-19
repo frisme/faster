@@ -1,28 +1,30 @@
+using FFImageLoading.Maui;
+
 namespace faster;
 
 public delegate void CallBack();
 public class Player : Animacao
 {
-    public Player(CachedImage a): base (a)
+    public Player (CachedImageView a): base (a)
     {
-        //Animaçao do carro andando
-        for(int i = 1; i <= 4; i++)
-            animacao1.Add($"carro{i.ToString("D2")}.png");
-        //Animação da explosão
-        for(int i = 1; i < 6; i++)
-            animacao2.Add($"morreu{i.ToString("D2")}.png");
-        SetAnimacaoAtiva(1);
+        for (int i = 1; i <= 20; ++i)
+        {
+            Animacao1.Add($"bixim{i.ToString("D2")}.png");
+        }
+        for (int i = 1; i <= 20; i++)
+        {
+            Animacao2.Add($"minimente{i.ToString("D2")}.png");
+            SetAnimacaoAtiva(1);
+        }
     }
-
     public void Die()
     {
-        loop = false;
+        Loop = false;
         SetAnimacaoAtiva(2);
     }
-
     public void Run()
     {
-        loop = true;
+        Loop = true;
         SetAnimacaoAtiva(1);
         Play();
     }

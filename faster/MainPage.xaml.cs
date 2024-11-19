@@ -20,7 +20,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		player = new Player(Imgbixin);
+		player = new Player(ImgbRoberto);
 		player.Run();
 	}
 
