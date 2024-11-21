@@ -5,7 +5,7 @@ namespace faster;
 public delegate void CallBack();
 public class Player : Animacao
 {
-    public Player (CachedImageView a): base (a)
+    public Player (CachedImageView poggers): base (poggers)
     {
         for (int i = 1; i <= 20; ++i)
         {

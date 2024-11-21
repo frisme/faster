@@ -5,7 +5,6 @@
              xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              Shell.NavBarIsVisible="False">
              
-    <ScrollView>
         <Grid>
         
             <HorizontalStackLayout x:Name="primeiro">
@@ -50,7 +49,7 @@
                             WidthRequest="200"/>
 
               <ff:CachedImageView
-                     CacheType="Disc"
+                     CacheType="Disk"
                      CacheDuration="365"
                      Source="bixim.png"
                      x:Name="ImgbRoberto"
@@ -58,5 +57,4 @@
                      HeightRequest="50"/>
         
         </Grid>
-    </ScrollView>
 </ContentPage>

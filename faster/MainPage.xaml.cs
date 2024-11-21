@@ -9,11 +9,11 @@ public partial class MainPage : ContentPage
 
 	const int tempoEntreFrames = 25;
 
-	int velocidade = 0;
 	int velocidade1 = 0;
 	int velocidade2 = 0;
 	int velocidade3 = 0;
 	int velocidade4 = 0;
+	int velocidade = 0;
 	int larguraJanela = 0;
 	int alturaJanela = 0;
 

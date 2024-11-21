@@ -13,9 +13,9 @@ public  class Animacao
     int FrameAtual = 1;
     protected CachedImageView ImageView;
 
-    public Animacao(CachedImageView ugauga)
+    public Animacao(CachedImageView poggers)
     {
-        ImageView = ugauga;
+        ImageView = poggers;
     }
 
     public void Stop()
@@ -28,9 +28,9 @@ public  class Animacao
         Parado = false;
     }
 
-    public void SetAnimacaoAtiva(int ugauga)
+    public void SetAnimacaoAtiva(int poggers)
     {
-        AnimacaoAtiva = ugauga;
+        AnimacaoAtiva = poggers;
     }
 
     public void Desenha()
