@@ -3,19 +3,26 @@
 public partial class MainPage : ContentPage
 {
 	Player player;
+	Inimigos inimigos;
 
-	bool estaMorto = false;
-	bool estaPulando = false;
-
-	const int tempoEntreFrames = 25;
-
-	int velocidade1 = 0;
-	int velocidade2 = 0;
-	int velocidade3 = 0;
-	int velocidade4 = 0;
-	int velocidade = 0;
-	int larguraJanela = 0;
-	int alturaJanela = 0;
+	bool Morto = false;
+	bool Pulando = false;
+	const int TempoEntreFrames = 25;
+	int Velocidade = 0;
+	int Velocidade01 = 0;
+	int Velocidade02 = 0;
+	int Velocidade03 = 0;
+	int LarguraJanela = 0;
+	int AlturaJanela = 0;
+	const int ForcaGravidade = 6;
+	bool EstaNoChao = true;
+	bool EstaNoAr = false;
+	bool EstaPulando = false;
+	int TempoPulando = 0;
+	int TempoNoAr = 0;
+	const int MaxTempoPulando = 6;
+	const int MaxTempoAr = 4;
+	const int ForcaPulo = 8;
 
 	public MainPage()
 	{
@@ -29,18 +36,72 @@ public partial class MainPage : ContentPage
 		base.OnAppearing();
 		Desenha();
 	}
+	void AplicaGravidade()
+	{
+
+		if (player.GetY() < 0)
+		{
+			player.MoveY(ForcaGravidade);
+		}
+		else if (player.GetY() >= 0)
+		{
+			player.SetY(0);
+			EstaNoChao = true;
+		}
+	}
+
+	void ClicaNaTela(object i, TappedEventArgs a)
+	{
+		EstaPulando = true;
+	}
+
+	void AplicaPulo()
+	{
+		EstaNoChao = false;
+		if (EstaPulando && TempoPulando >= MaxTempoPulando)
+		{
+			EstaPulando = false;
+			EstaNoAr = true;
+			TempoNoAr = 0;
+		}
+		else if (EstaNoAr && TempoNoAr >= MaxTempoAr)
+		{
+			EstaPulando = false;
+			EstaNoAr = false;
+			TempoPulando = 0;
+			TempoNoAr = 0;
+		}
+		else if (EstaPulando && TempoPulando < MaxTempoPulando)
+		{
+			player.MoveY(-ForcaPulo);
+			TempoNoAr++;
+		}
+		else if (EstaNoAr)
+		{
+			TempoNoAr++;
+		}
+	}
 
 	async Task Desenha()
 	{
-		// bool a =false;
-		while(!estaMorto)
+		while (!Morto)
 		{
-			GerenciaCenarios();
-			player.Desenha();
-			//ImgCarro.IsVisible = a;
-			//ImgCarroBack.IsVisible = !a;
-			//a = !a;
-			await Task.Delay(tempoEntreFrames);
+			if (inimigos != null)
+			{
+				inimigos.Desenha(Velocidade);
+			}
+			
+			if (!EstaPulando && !EstaNoAr)
+			{
+				AplicaGravidade();
+				player.Desenha();
+			}
+			else
+			{
+				AplicaPulo();
+				
+			}
+			await Task.Delay(TempoEntreFrames);
 		}
 	}
 
@@ -53,11 +114,10 @@ public partial class MainPage : ContentPage
 
 	void CalculaVelocidade(double w)
 	{
-		velocidade1 = (int)(w * 0.001);
-		velocidade2 = (int)(w * 0.004);
-		velocidade3 = (int)(w * 0.007);
-		velocidade4 = (int)(w * .009);
-		velocidade = (int)(w * 0.01);
+		Velocidade01 = (int)(w * 0.001);
+		Velocidade02 = (int)(w * 0.004);
+		Velocidade03 = (int)(w * 0.007);
+		Velocidade = (int)(w * 0.01);
 	}
 
 	void CorrigeTamanhoCenario(double w, double h)
@@ -91,10 +151,9 @@ public partial class MainPage : ContentPage
 
 	void MoveCenario()
 	{
-		primeiro.TranslationX -= velocidade1;
-		segundo.TranslationX -= velocidade2;
-		terceiro.TranslationX -= velocidade3;
-		quarto.TranslationX -= velocidade4;
+		primeiro.TranslationX -= Velocidade01;
+		segundo.TranslationX -= Velocidade02;
+		terceiro.TranslationX -= Velocidade03;
 	}
 
 	void GerenciaCenario(HorizontalStackLayout hsl)
@@ -108,4 +167,11 @@ public partial class MainPage : ContentPage
 			hsl.TranslationX = view.TranslationX;
 		}
 	}
+	void OnGridTorred (object a, TappedEventArgs e)
+    {
+        if (EstaNoChao)
+        {
+            EstaPulando = true;
+        }
+    }
 }
