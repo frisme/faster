@@ -7,7 +7,7 @@ public partial class MainPage : ContentPage
 
 	bool Morto = false;
 	bool Pulando = false;
-	const int TempoEntreFrames = 25;
+	const int TempoEntreFrames = 29;
 	int Velocidade = 0;
 	int Velocidade01 = 0;
 	int Velocidade02 = 0;
@@ -20,9 +20,9 @@ public partial class MainPage : ContentPage
 	bool EstaPulando = false;
 	int TempoPulando = 0;
 	int TempoNoAr = 0;
-	const int MaxTempoPulando = 6;
+	const int MaxTempoPulando = 10;
 	const int MaxTempoAr = 4;
-	const int ForcaPulo = 8;
+	const int ForcaPulo = 12;
 
 	public MainPage()
 	{
@@ -49,12 +49,6 @@ public partial class MainPage : ContentPage
 			EstaNoChao = true;
 		}
 	}
-
-	void ClicaNaTela(object i, TappedEventArgs a)
-	{
-		EstaPulando = true;
-	}
-
 	void AplicaPulo()
 	{
 		EstaNoChao = false;
@@ -74,7 +68,7 @@ public partial class MainPage : ContentPage
 		else if (EstaPulando && TempoPulando < MaxTempoPulando)
 		{
 			player.MoveY(-ForcaPulo);
-			TempoNoAr++;
+			TempoPulando++;
 		}
 		else if (EstaNoAr)
 		{
@@ -83,24 +77,19 @@ public partial class MainPage : ContentPage
 	}
 
 	async Task Desenha()
-	{
+	{ 
 		while (!Morto)
 		{
-			if (inimigos != null)
-			{
-				inimigos.Desenha(Velocidade);
-			}
-			
+			     GerenciaCenarios();
+				 if(inimigos!=null)
+				 inimigos.Desenha(Velocidade);
 			if (!EstaPulando && !EstaNoAr)
 			{
 				AplicaGravidade();
 				player.Desenha();
 			}
 			else
-			{
 				AplicaPulo();
-				
-			}
 			await Task.Delay(TempoEntreFrames);
 		}
 	}
@@ -110,6 +99,15 @@ public partial class MainPage : ContentPage
 		base.OnSizeAllocated(w, h);
 		CorrigeTamanhoCenario(w, h);
 		CalculaVelocidade(w);
+
+		{
+			inimigos = new Inimigos(-w);
+			inimigos.Add(new Inimigo(quinto));
+			inimigos.Add(new Inimigo(quinto));
+			inimigos.Add(new Inimigo(quinto));
+			inimigos.Add(new Inimigo(quinto));
+
+		}
 	}
 
 	void CalculaVelocidade(double w)
@@ -120,33 +118,33 @@ public partial class MainPage : ContentPage
 		Velocidade = (int)(w * 0.01);
 	}
 
-	void CorrigeTamanhoCenario(double w, double h)
+	void CorrigeTamanhoCenario(double width, double height)
 	{
-		foreach (var a in primeiro.Children)
-			(a as Image).WidthRequest = w;
+		foreach (var background in primeiro.Children)
+			(background as Image).WidthRequest = width;
 
-		foreach (var a in segundo.Children)
-			(a as Image).WidthRequest = w;
+		foreach (var background2 in segundo.Children)
+			(background2 as Image).WidthRequest = width;
 		
-		foreach (var a in terceiro.Children)
-			(a as Image).WidthRequest = w;
+		foreach (var background3 in terceiro.Children)
+			(background3 as Image).WidthRequest = width;
 		
-		foreach (var a in quarto.Children)
-			(a as Image).WidthRequest = w;
+		foreach (var floor in quarto.Children)
+			(floor as Image).WidthRequest = width;
 
-		primeiro.WidthRequest = w * 1.5;
-		segundo.WidthRequest = w * 1.5;
-		terceiro.WidthRequest = w * 1.5;
-		quarto.WidthRequest = w * 1.5;
+		primeiro.WidthRequest = width * 1.5;
+		segundo.WidthRequest = width * 5.0;
+		terceiro.WidthRequest = width * 3.5;
+		quarto.WidthRequest = width * 1.5;
 	}
 
 	void GerenciaCenarios()
 	{
 		MoveCenario();
-		GerenciaCenario(primeiro);
-		GerenciaCenario(segundo);
-		GerenciaCenario(terceiro);
-		GerenciaCenario(quarto);		
+		GerenciaCenarios(primeiro);
+		GerenciaCenarios(segundo);
+		GerenciaCenarios(terceiro);
+		GerenciaCenarios(quarto);		
 	}
 
 	void MoveCenario()
@@ -154,20 +152,21 @@ public partial class MainPage : ContentPage
 		primeiro.TranslationX -= Velocidade01;
 		segundo.TranslationX -= Velocidade02;
 		terceiro.TranslationX -= Velocidade03;
+		quarto.TranslationX -= Velocidade;
 	}
 
-	void GerenciaCenario(HorizontalStackLayout hsl)
+	void GerenciaCenarios(HorizontalStackLayout HSL)
 	{
-		var view = (hsl.Children.First() as Image);
+		var view = (HSL.Children.First() as Image);
 
-		if(view.WidthRequest + hsl.TranslationX < 0)
+		if(view.WidthRequest + HSL.TranslationX < 0)
 		{
-			hsl.Children.Remove(view);
-			hsl.Children.Add(view);
-			hsl.TranslationX = view.TranslationX;
+			HSL.Children.Remove(view);
+			HSL.Children.Add(view);
+			HSL.TranslationX = view.TranslationX;
 		}
 	}
-	void OnGridTorred (object a, TappedEventArgs e)
+	void OnGridTapped (object a, TappedEventArgs e)
     {
         if (EstaNoChao)
         {

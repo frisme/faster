@@ -6,9 +6,9 @@ public class Inimigo
 {
     Image ImageView;
 
-    public Inimigo(Image poggers)
+    public Inimigo(Image noggers)
     {
-        ImageView = poggers;
+        ImageView = noggers;
     }
 
     public void MoveX(double s)

@@ -7,13 +7,13 @@ public class Player : Animacao
 {
     public Player (CachedImageView poggers): base (poggers)
     {
-        for (int i = 1; i <= 20; ++i)
+        for (int i = 1; i <= 12; i++)
         {
             Animacao1.Add($"bixim{i.ToString("D2")}.png");
         }
-        for (int i = 1; i <= 20; i++)
+        for (int i2 = 1; i2 <= 2; i2++)
         {
-            Animacao2.Add($"minimente{i.ToString("D2")}.png");
+            Animacao2.Add($"minimente{i2.ToString("D2")}.png");
             SetAnimacaoAtiva(1);
         }
     }

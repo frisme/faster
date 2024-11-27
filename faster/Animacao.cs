@@ -9,8 +9,8 @@ public  class Animacao
     protected List<String> Animacao3 = new List<String>();
     protected bool Loop = true;
     protected int AnimacaoAtiva = 1;
-    bool Parado = true;
-    int FrameAtual = 1;
+    private bool Parado = true;
+    private int FrameAtual = 1;
     protected CachedImageView ImageView;
 
     public Animacao(CachedImageView poggers)

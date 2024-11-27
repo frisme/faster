@@ -7,7 +7,7 @@
              
         <Grid>
           <Grid.GestureRecognizers>
-              <TapGestureRecognizer Tapped="ClicaNaTela"/>
+              <TapGestureRecognizer Tapped="OnGridTapped"/>
           </Grid.GestureRecognizers>
         
             <HorizontalStackLayout x:Name="primeiro">
@@ -21,46 +21,52 @@
               
               <HorizontalStackLayout x:Name="segundo">
                      <Image Source="background2.png"
-                            HeightRequest="300"/>
+                           Aspect="Fill"/>
                      <Image Source="background2.png"
-                            HeightRequest="300"/>
+                            Aspect="Fill"/>
                      <Image Source="background2.png"
-                            HeightRequest="300"/>
+                            Aspect="Fill"/>
               </HorizontalStackLayout>
 
               <HorizontalStackLayout x:Name="terceiro">
                      <Image Source="background3.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
+                            Aspect="Fill"/>
                      <Image Source="background3.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
+                            Aspect="Fill"/>
                      <Image Source="background3.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
+                            Aspect="Fill"/>
               </HorizontalStackLayout>
 
               <HorizontalStackLayout x:Name="quarto">
                      <Image Source="floor.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
+                            Aspect="Fill"
+                            VerticalOptions="Center"/>
                      <Image Source="floor.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
+                            Aspect="Fill"
+                            VerticalOptions="Center"/>
                      <Image Source="floor.png"
-                            WidthRequest="400"
-                            VerticalOptions="End"/>
+                            Aspect="Fill"
+                            VerticalOptions="Center"/>
               </HorizontalStackLayout>
-                     <Image Source="bixim1.png"
-                            WidthRequest="200"/>
+
 
               <ff:CachedImageView
-                     CacheType="Disk"
+                     CacheType="All"
                      CacheDuration="365"
-                     Source="bixim.png"
                      x:Name="ImgbRoberto"
-                     WidthRequest="200"
-                     HeightRequest="50"/>
+                     HeightRequest="250"
+                     WidthRequest="300"
+                     VerticalOptions="End"
+                     HorizontalOptions="Start"
+                     Margin="0,0,0,125"/>
+
+              <Image x:Name="quinto"
+                     Source="download.png"
+                     HorizontalOptions="End"
+                     VerticalOptions="Center"
+                     WidthRequest="100"
+                     Margin="0,0,500,0"
+                     HeightRequest="100"/>
         
         </Grid>
 </ContentPage>

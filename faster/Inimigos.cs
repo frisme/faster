@@ -8,18 +8,18 @@ public class Inimigos
     Inimigo atual = null;
     double minX = 0;
 
-    public Inimigos(Double poggers)
+    public Inimigos(double noggers)
     {
-        minX = poggers;
+        minX = noggers;
     }
 
-    public void Add(Inimigo poggers)
+    public void Add(Inimigo noggers)
     {
-        inimigos.Add(poggers);
+        inimigos.Add(noggers);
 
         if (atual == null)
         {
-            atual = poggers;
+            atual = noggers;
             Iniciar();
         }
     }
